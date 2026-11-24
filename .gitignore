@@ -4,21 +4,27 @@
 venv/
 env/
 
-# Python
+# Archivos de Python
 __pycache__/
 *.py[cod]
-*.pyo
 
-# VS Code
+# Pruebas
+.pytest_cache/
+
+# Visual Studio Code
 .vscode/
 
 # Archivos temporales
 *.log
 *.tmp
 
-# Archivos del sistema
+# Sistema operativo
 .DS_Store
 Thumbs.db
 
-# Resultados locales
-results/
+# Resultados experimentales
+results/*
+!results/.gitkeep
+
+resultados/*
+!resultados/.gitkeep

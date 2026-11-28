@@ -60,13 +60,24 @@ while estado.corriendo && (opts.cuadros_max == 0 || k < opts.cuadros_max)
     [rgb, nuevo] = cam.leer();
     ms_captura = 1000 * toc(a);
 
+    % Si el usuario cerró la interfaz mientras la cámara capturaba, salir
+    % antes de convertir o procesar un cuadro que ya no se va a mostrar.
+    if hay_ventana && ~ventana.abierta()
+        estado.corriendo = false;
+        break
+    end
+
     % La operación se lee después de capturar para no mezclar una op vieja con parámetros nuevos
     op = ops(estado.op);
 
     % Cuadro repetido: no se procesa, solo se cuenta la lectura
     if ~nuevo
         metricas.registrar(ms_captura, 0, 0, 0, false, op.nombre);
-        if hay_ventana, drawnow limitrate; end
+        if hay_ventana
+            if ~ventana.abierta(), break; end
+            drawnow limitrate;
+            if ~ventana.abierta(), break; end
+        end
         continue
     end
 
@@ -82,9 +93,28 @@ while estado.corriendo && (opts.cuadros_max == 0 || k < opts.cuadros_max)
     c = tic;
     img = visionlab.nucleo.Pipeline.a_despliegue(salida);
     if hay_ventana
+        % Si la ventana se cerró durante la captura/procesamiento, no intentar
+        % actualizar sus imágenes. El break deja que onCleanup libere recursos.
+        if ~ventana.abierta()
+            estado.corriendo = false;
+            break
+        end
+
+        % mostrar() solo actualiza CData; no devuelve un valor lógico.
         ventana.mostrar(rgb, img);
+
+        % Verificar de nuevo por si la figura fue cerrada durante la actualización.
+        if ~ventana.abierta()
+            estado.corriendo = false;
+            break
+        end
+
         ventana.texto(metricas.texto());
         drawnow limitrate;
+        if ~ventana.abierta()
+            estado.corriendo = false;
+            break
+        end
     end
     ms_despliegue = 1000 * toc(c);
 
@@ -115,7 +145,8 @@ end
 % Última muestra de recursos, cierra la última operación y toda la corrida
 metricas.tomar_recursos(ops(estado.op).nombre);
 r = metricas.resumen(true);
-clear cierre cierre_camara   % aquí se ejecutan los onCleanup
+clear cierre;          % cierra interfaz y exporta métricas
+clear cierre_camara;   % libera la cámara después de cerrar la interfaz
 
 suma = r.ms_captura + r.ms_gris + r.ms_operacion + r.ms_despliegue;
 fprintf('\nLecturas: %d en %.2f s -> %.1f lecturas/s\n', r.lecturas, r.segundos, r.lecturas_por_s);
@@ -142,9 +173,26 @@ end
 end
 
 function liberar(ventana, metricas, carpeta)
-% Se llama al salir de principal: exporta las métricas y cierra la figura
-if metricas.n > 0
-    fprintf('CSV: %s\n', metricas.exportar(carpeta));
-end
-if ~isempty(ventana), ventana.cerrar(); end
+% Limpieza segura: cerrar primero la interfaz y después exportar métricas.
+% Esta función puede ejecutarse por salida normal, error o interrupción.
+
+    if ~isempty(ventana)
+        try
+            ventana.cerrar();
+        catch err
+            warning('PDI:Ventana:Cierre', ...
+                'No se pudo cerrar la interfaz limpiamente: %s', err.message);
+        end
+    end
+
+    if ~isempty(metricas) && metricas.n > 0
+        try
+            fprintf('CSV: %s\n', metricas.exportar(carpeta));
+        catch err
+            warning('PDI:Metricas:Exportacion', ...
+                'No se pudieron exportar las métricas: %s', err.message);
+        end
+    end
+
+    drawnow;
 end

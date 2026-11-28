@@ -1,0 +1,15 @@
+operacion,categoria,parametros,ms_mediana,ms_p90,fps_max
+"Negativo","Niveles de gris","-",0.031,0.278,32000.0
+"Corrección gamma","Niveles de gris","gamma=1",2.793,3.104,358.1
+"Umbral binario","Niveles de gris","umbral=128",0.106,0.212,9411.8
+"Ecualización de histograma","Niveles de gris","-",4.707,5.361,212.5
+"Dithering Bayer (2x2, 4x4, 8x8)","Dithering y cuantización","orden=2",3.477,3.843,287.6
+"Cuantización uniforme","Dithering y cuantización","niveles=8",2.654,2.855,376.7
+"Suavizado binomial","Filtrado y bordes","longitud=5",3.071,3.835,325.6
+"Bordes (binomial orden 1)","Filtrado y bordes","longitud=5; umbral=0",5.531,6.160,180.8
+"Laplaciano (binomial orden 2)","Filtrado y bordes","longitud=3",6.927,7.632,144.4
+"Erosión","Morfología","tamano=5",2.166,2.424,461.7
+"Dilatación","Morfología","tamano=5",2.192,2.559,456.2
+"Diferencia de cuadros","Movimiento","umbral=25",0.645,0.844,1550.4
+"Block matching (SAD)","Movimiento","bloque=16; radio=3",11.343,14.797,88.2
+"Histograma","Adicionales","-",2.358,2.928,424.1

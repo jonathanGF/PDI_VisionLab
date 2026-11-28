@@ -1,0 +1,11 @@
+operacion,parametro,valor,mse,psnr
+bayer,orden,1,12885.46,7.03
+bayer,orden,2,12008.74,7.34
+bayer,orden,3,12021.72,7.33
+cuantizacion,niveles,2,814.89,19.02
+cuantizacion,niveles,4,349.17,22.70
+cuantizacion,niveles,8,66.50,29.90
+cuantizacion,niveles,32,5.69,40.58
+binomial,longitud,3,3.36,42.87
+binomial,longitud,7,12.23,37.26
+binomial,longitud,15,27.41,33.75

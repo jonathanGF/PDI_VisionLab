@@ -1,0 +1,53 @@
+operacion,parametro,valor,ms_mediana
+"Suavizado binomial",longitud,3,4.110
+"Suavizado binomial",longitud,5,3.477
+"Suavizado binomial",longitud,7,3.031
+"Suavizado binomial",longitud,9,3.008
+"Suavizado binomial",longitud,11,3.124
+"Suavizado binomial",longitud,13,3.112
+"Suavizado binomial",longitud,15,3.197
+"Bordes (binomial orden 1)",longitud,3,5.695
+"Bordes (binomial orden 1)",longitud,5,5.566
+"Bordes (binomial orden 1)",longitud,7,5.644
+"Bordes (binomial orden 1)",longitud,9,5.674
+"Bordes (binomial orden 1)",longitud,11,5.812
+"Laplaciano (binomial orden 2)",longitud,3,7.116
+"Laplaciano (binomial orden 2)",longitud,5,7.192
+"Laplaciano (binomial orden 2)",longitud,7,6.914
+"Laplaciano (binomial orden 2)",longitud,9,6.946
+"Laplaciano (binomial orden 2)",longitud,11,7.011
+"Dithering Bayer (2x2, 4x4, 8x8)",orden,1,3.067
+"Dithering Bayer (2x2, 4x4, 8x8)",orden,2,3.035
+"Dithering Bayer (2x2, 4x4, 8x8)",orden,3,3.088
+"Cuantización uniforme",niveles,2,4.153
+"Cuantización uniforme",niveles,4,4.038
+"Cuantización uniforme",niveles,8,4.025
+"Cuantización uniforme",niveles,16,3.423
+"Cuantización uniforme",niveles,32,2.853
+"Cuantización uniforme",niveles,64,3.113
+"Cuantización uniforme",niveles,128,4.647
+"Cuantización uniforme",niveles,256,4.894
+"Erosión",tamano,3,1.690
+"Erosión",tamano,5,2.549
+"Erosión",tamano,7,3.381
+"Erosión",tamano,9,4.205
+"Erosión",tamano,11,5.207
+"Erosión",tamano,13,5.775
+"Erosión",tamano,15,6.761
+"Dilatación",tamano,3,1.275
+"Dilatación",tamano,5,2.265
+"Dilatación",tamano,7,3.100
+"Dilatación",tamano,9,3.963
+"Dilatación",tamano,11,4.916
+"Dilatación",tamano,13,5.753
+"Dilatación",tamano,15,6.709
+"Block matching (SAD)",bloque,8,14.575
+"Block matching (SAD)",bloque,16,15.865
+"Block matching (SAD)",bloque,24,11.054
+"Block matching (SAD)",bloque,32,9.859
+"Block matching (SAD)",radio,1,3.282
+"Block matching (SAD)",radio,2,7.691
+"Block matching (SAD)",radio,3,14.346
+"Block matching (SAD)",radio,4,22.233
+"Block matching (SAD)",radio,5,37.601
+"Block matching (SAD)",radio,6,33.519

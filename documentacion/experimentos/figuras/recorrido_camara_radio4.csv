@@ -1,0 +1,15 @@
+operacion,cuadros_unicos,fps_unicos,mediana_ms_captura,mediana_ms_gris,mediana_ms_operacion,mediana_ms_despliegue
+"Negativo",40,23.76,26.167,3.430,0.170,3.055
+"Corrección gamma",40,27.54,20.002,2.623,4.320,1.977
+"Umbral binario",40,28.28,17.001,2.872,0.280,3.379
+"Ecualización de histograma",40,25.83,20.803,3.214,9.441,3.196
+"Dithering Bayer (2x2, 4x4, 8x8)",40,29.05,19.981,2.640,4.990,4.021
+"Cuantización uniforme",40,29.47,20.956,2.996,4.699,3.215
+"Suavizado binomial",40,29.38,19.877,2.743,5.409,3.087
+"Bordes (binomial orden 1)",40,25.88,19.140,2.845,10.932,2.934
+"Laplaciano (binomial orden 2)",40,27.05,17.547,2.473,11.807,2.689
+"Erosión",40,32.44,20.385,2.719,3.275,2.201
+"Dilatación",40,30.30,20.863,2.944,4.715,2.181
+"Diferencia de cuadros",40,30.49,22.613,2.913,1.177,3.017
+"Block matching (SAD)",40,18.09,14.011,2.490,30.994,2.049
+"Histograma",40,31.69,22.246,2.778,2.930,2.358
